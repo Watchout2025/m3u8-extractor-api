@@ -2,13 +2,7 @@
   functions = "netlify/functions"
   publish = "."
 
-[functions]
-  timeout = 30
-
 [[redirects]]
   from = "/api/extract"
   to = "/.netlify/functions/extract"
   status = 200
-
-[build.environment]
-  PUPPETEER_SKIP_CHROMIUM_DOWNLOAD = "true"
