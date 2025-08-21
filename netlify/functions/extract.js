@@ -104,20 +104,24 @@ async function extractM3U8WithBrowser(targetUrl) {
     
     // Configure Chromium for Netlify
     browser = await puppeteer.launch({
-      args: [
-        ...chromium.args,
-        '--disable-web-security',
-        '--disable-features=VizDisplayCompositor',
-        '--no-sandbox',
-        '--disable-setuid-sandbox',
-        '--disable-dev-shm-usage',
-        '--disable-gpu'
-      ],
-      defaultViewport: chromium.defaultViewport,
-      executablePath: await chromium.executablePath(),
-      headless: chromium.headless,
-      ignoreHTTPSErrors: true,
-    });
+  args: [
+    ...chromium.args,
+    '--no-sandbox',
+    '--disable-setuid-sandbox',
+    '--disable-dev-shm-usage',
+    '--disable-gpu',
+    '--single-process',
+    '--no-zygote',
+    '--disable-web-security',
+    '--disable-features=VizDisplayCompositor'
+  ],
+  defaultViewport: chromium.defaultViewport,
+  executablePath: await chromium.executablePath({
+    path: '/tmp'
+  }),
+  headless: 'new',
+  ignoreHTTPSErrors: true,
+});
 
     const page = await browser.newPage();
     const m3u8Links = new Set();
