@@ -1,0 +1,13 @@
+{
+  "name": "m3u8-extractor-api",
+  "version": "1.0.0",
+  "description": "M3U8 link extractor using Puppeteer",
+  "main": "index.js",
+  "scripts": {
+    "build": "echo 'No build step required'"
+  },
+  "dependencies": {
+    "puppeteer-core": "^21.0.0",
+    "@sparticuz/chromium": "^118.0.0"
+  }
+}
