@@ -2,6 +2,11 @@
   functions = "netlify/functions"
   publish = "."
 
+[build.environment]
+  PUPPETEER_SKIP_CHROMIUM_DOWNLOAD = "true"
+  PUPPETEER_EXECUTABLE_PATH = ""
+  AWS_LAMBDA_JS_RUNTIME = "nodejs18.x"
+
 [[redirects]]
   from = "/api/extract"
   to = "/.netlify/functions/extract"
